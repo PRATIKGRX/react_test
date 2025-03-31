@@ -3,7 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { parse } from 'postcss';
+import { useTestContext } from './components/TestContext';
 function Home() {
+   const {name,setName}=useTestContext();
  
   const [task, setTask] = useState(() => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -100,6 +102,11 @@ function Home() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div>
+        <h2>{name}</h2>
+        <button onClick={()=>{setName("changed from home")}}>change</button>
       </div>
     </>
   )
